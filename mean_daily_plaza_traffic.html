@@ -85,6 +85,50 @@
 <body>
   <script>
   d3.json("data/plaza_traffic.json", draw);
+  <p>
+  <!--Data format is as follows for each element: -->
+  <!--{-->
+    <!--  "count": 26774.09756097561,-->
+    <!--  "id": 1,-->
+    <!--  "name": "Robert F. Kennedy Bridge Bronx Plaza"-->
+    <!--},-->
+  
+  <!--For this example, we will apply the same pattern for laying out our chart elements as the preceding list. Instead of using list items to build up our visualization, here we are using div tags with specified widths to draw the rectangles that make up the bar chart.-->
+  
+  <!--Each div in the body will represent one data entry (place i.e. "row of data") and will contain 2 sub divs, one for the actual bar and value, and another for the label indicating the place that the data corresponds to.-->
+  
+  function draw(data) {
+    "use strict";
+    
+    d3.select("body")
+    .append("div")
+    
+    .attr("class","chart") <!--Here the containing element is a div tag, whose class is set to “chart.” This allows us to select it later, and apply any styles that are appropriate for the whole chart.-->
+    
+    .selectAll("div.bar") <!--We then select all the div tags whose class is bar—as before this is an empty selection.-->
+    
+    .data(data.cash) <!--We join the empty selection to our data-->
+    
+    .enter() <!--Then generate the entering selection—an array with one element per data point.-->
+    
+    .append("div") <!--we append div tags.-->
+    
+    .attr("class","line") <!--With class bar.-->
+    
+    <!--Add name label-->
+    d3.selectAll("div.line")
+    .append("div")
+    .attr("class","label")
+    .text(function(d){return d.name})
+    
+    <!--Add bar-->
+    d3.selectAll("div.line")
+    .append("div")
+    .attr("class","bar")
+    .style("width", function(d){return d.count/100 + "px"})
+    .text(function(d){return Math.round(d.count)});
+  }
+</p>
   </script>
 </body>
 </html>
