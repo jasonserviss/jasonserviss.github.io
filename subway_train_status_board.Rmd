@@ -1,7 +1,9 @@
 ---
-title: "d3docTest"
+title: "Subway Train Status Board"
 output: html_document
 ---
+
+Reporting the current status of the subway trains.
 
 The data has the following JSON format:  
   {  
@@ -57,6 +59,10 @@ function draw(data) {
 }
     
 ```
+
+#### The output takes the following form:
+<br></br>
+
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
   <script>
