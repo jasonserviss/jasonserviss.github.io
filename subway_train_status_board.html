@@ -48,53 +48,58 @@
   <script>
     d3.json("data/service_status.json", draw);
   </script>
-  <p>Comment</p>
+  <p>The data has the following JSON format:</p>
+  <p>{</p>
+  <p>"status": ["GOOD SERVICE"], "name": ["123"],</p>
+  <p>"url": [null],</p>
+  <p>"text": ["..."], "plannedworkheadline": [null], "Time": [" 7:35AM"],</p>
+  <p>"Date": ["12/15/2011"]</p>
+  <p>}</p>
+  <br></br>
+  <p>Define the draw function with data as the input</p>
   <code class="prettyprint">
     function draw(data) {<br/>      &quot;use strict&quot;;<br/>
   </code>
-  <p>Comment</p>
+  <p>Select the body</p>
   <code class="prettyprint">
     d3.select(&quot;body&quot;) <br/>
   </code>
-  <p>Comment</p>
+  <p>Append a ul tag (unordered list)</p>
   <code class="prettyprint">
     .append(&quot;ul&quot;) <br/>
   </code>
-  <p>Comment</p>
+  <p>Select all list elements on the page, even though we know there aren’t any. This prepares the way for new list elements to enter the visualization. Practically, this creates the empty selection, which is an array with no elements, but that has been blessed with a data method, allowing it to accept data. a li tag generates a list item</p>
   <code class="prettyprint">
     .selectAll(&quot;li&quot;) <br/>
   </code>
-  <p>Comment</p>
+  <p>The data method joins the empty selection with each element of the data set. This results in a selection that is an array with as many elements as we have data points (subway lines). We’re still not quite there: this array’s elements are all empty, however this selection has a new enter method.</p>
   <code class="prettyprint">
     .data(data) <br/>
   </code>
-  <p>Comment</p>
+  <p>The enter method returns a selection whose array contains the data for all the new elements we’re going to create; all the elements for which we have data but don’t already have items on the page. This is called the enter selection. The .enter() method returns a selection containing data for all 11 data elements. This enter selection is now ready for us to append elements to it.</p>
   <code class="prettyprint">
     .enter() <br/>
   </code>
-  <p>Comment</p>
+  <p>Finally, we need to tell D3 what to do with each element of the entering selection we’ve just created. For this visualization, we append an <li> element to the enter selection whose text contains the name of the line and its status.</p>
   <code class="prettyprint">
     .append(&quot;li&quot;) <br/>
   </code>
-  <p>Comment</p>
+  <p>To access individual elements of the data, we need to write a callback function as the text’s second argument. This function is passed the current element in the data set and the index of that element. For this example, our callback accesses two elements of the data—the name and status—and simply concatenates them, returning the result.</p>
   <code class="prettyprint">
     .text(function (d) {<br/>
     &nbspreturn d.name + &quot;: &quot; + d.status;<br/>
     });
   </code>
-  <p>Comment</p>
+  <p>Adding Data-Dependent Style</p>
   <code class="prettyprint">
-      d3.selectAll(&quot;li&quot;)<br/>
-  </code>
-  <p>Comment</p>
-  <code class="prettyprint">
-    .style(&quot;font-weight&quot;, function (d) {<br/>
-    &nbsp if (d.status == &quot;GOOD SERVICE&quot;){<br/>
-    &nbsp&nbsp return &quot;normal&quot;;<br/>
-    &nbsp } else {<br/>
-    &nbsp&nbsp return &quot;bold&quot;;<br/>
-    &nbsp } <br/>
-    })<br></br>
+    d3.selectAll(&quot;li&quot;)<br/>
+    &nbsp .style(&quot;font-weight&quot;, function (d) {<br/>
+    &nbsp&nbsp if (d.status == &quot;GOOD SERVICE&quot;){<br/>
+    &nbsp&nbsp&nbsp return &quot;normal&quot;;<br/>
+    &nbsp&nbsp } else {<br/>
+    &nbsp&nbsp&nbsp return &quot;bold&quot;;<br/>
+    &nbsp&nbsp } <br/>
+    &nbsp})<br></br>
   </code>
   <code class="prettyprint">
     }<br/>
