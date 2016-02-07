@@ -89,14 +89,13 @@
   <p>Comment</p>
   <code class="prettyprint">
     .style(&quot;font-weight&quot;, function (d) {<br/>
-    &nbspif (d.status == &quot;GOOD SERVICE&quot;){<br/>
-    &nbspreturn &quot;normal&quot;;<br/>
-    &nbsp} else {<br/>              
-    &nbspreturn &quot;bold&quot;;<br/>
-    &nbsp} <br/>      
+    &nbsp if (d.status == &quot;GOOD SERVICE&quot;){<br/>
+    &nbsp&nbsp return &quot;normal&quot;;<br/>
+    &nbsp } else {<br/>
+    &nbsp&nbsp return &quot;bold&quot;;<br/>
+    &nbsp } <br/>
     })
   </code>
-  <p>Comment</p>
   <code class="prettyprint">
     }<br/>
   </code>
