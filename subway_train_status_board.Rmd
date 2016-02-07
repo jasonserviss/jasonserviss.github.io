@@ -3,7 +3,7 @@ title: "Subway Train Status Board"
 output: html_document
 ---
 
-Reporting the current status of the subway trains.
+#### Reporting the current status of the subway trains.
 
 The data has the following JSON format:  
   {  
