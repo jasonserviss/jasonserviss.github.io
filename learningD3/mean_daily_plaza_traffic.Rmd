@@ -108,12 +108,7 @@ Each div in the body will represent one data entry (place i.e. "row of data") an
 #### The output takes the following form:
 <br></br>
 
-<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
-
 <style>
-    
-    <!--CSS to add style to the plot-->
     
     div.chart{
       font-family:sans-serif;
@@ -131,17 +126,19 @@ Each div in the body will represent one data entry (place i.e. "row of data") an
       margin-left:22em;
     }
   
-    div.label {
-      height:3em;
-      line-height:3em;
-      padding-right:1em;
-      margin-bottom:2px;
-      float:left;
-      width:20em;
-      text-align:right;
+   div.label {
+    height:3em;
+    line-height:3em;
+    padding-right:1em;
+    margin-bottom:2px;
+    float:left;
+    width:20em;
+    text-align:right;
     }
   
 </style>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
 
 function draw(data) {
@@ -171,7 +168,7 @@ function draw(data) {
 </head>
 <body>
   <script>
-    d3.json("data/service_status.json", draw);
+    d3.json("data/plaza_traffic.json", draw);
   </script>
 </body>
 </html>
