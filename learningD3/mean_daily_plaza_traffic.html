@@ -192,43 +192,37 @@ img {
             text-align:right;
         }
         
-    </style>
-<pre><code>&lt;script&gt;
-function draw(data) {
-    &quot;use strict&quot;;
-    
-    console.log(data.cash)
-    
-    d3.select(&quot;body&quot;)
-        .append(&quot;div&quot;)
-        .attr(&quot;class&quot;, &quot;chart&quot;)
-        .selectAll(&quot;div.bar&quot;)
-        .data(data.cash)
-        .enter()
-        .append(&quot;div&quot;)
-        .attr(&quot;class&quot;,&quot;line&quot;)
-
-    d3.selectAll(&quot;div.line&quot;)
-        .append(&quot;div&quot;)
-        .attr(&quot;class&quot;,&quot;label&quot;)
-        .text(function(d){return d.name})
-    
-    d3.selectAll(&quot;div.line&quot;)
-        .append(&quot;div&quot;)
-        .attr(&quot;class&quot;,&quot;bar&quot;)
-        .style(&quot;width&quot;, function(d){return d.count/100 + &quot;px&quot;})
-        .text(function(d){return Math.round(d.count)});
-
+</style>
+<script>
+    function draw(data) {
+        "use strict";
         
+        console.log(data.cash)
         
-}
-&lt;/script&gt;</code></pre>
-</head>
-<body>
-<pre><code>&lt;script&gt;
+        d3.select("body")
+            .append("div")
+            .attr("class", "chart")
+            .selectAll("div.bar")
+            .data(data.cash)
+            .enter()
+            .append("div")
+            .attr("class","line")
+    
+        d3.selectAll("div.line")
+            .append("div")
+            .attr("class","label")
+            .text(function(d){return d.name})
+        
+        d3.selectAll("div.line")
+            .append("div")
+            .attr("class","bar")
+            .style("width", function(d){return d.count/100 + "px"})
+            .text(function(d){return Math.round(d.count)}
+    }
+</script>
+<script>
     d3.json('data/plaza_traffic.json', draw);
-&lt;/script&gt;</code></pre>
-</body>
+</script>
 </div>
 
 
