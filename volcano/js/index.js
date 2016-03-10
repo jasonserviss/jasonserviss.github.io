@@ -81,7 +81,6 @@ d3.json("limma.json", function (error, root) {
         .attr("class", "y axis")
         .attr("transform", "translate(0," + -axesMargin + ")")
         .call(yAxis)
-
         // ...and its label.
         .append("text")
         .attr("class", "label")
