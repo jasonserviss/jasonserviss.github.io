@@ -35,7 +35,7 @@ var margin = {top: 20, right: 20, bottom: 40, left: 40},
 // making the plot more readable.
     axesMargin = 10,
     width = 950 - margin.left - margin.right - axesMargin,
-    height = 500 - margin.top - margin.bottom - axesMargin;
+    height = 1000 - margin.top - margin.bottom - axesMargin;
 
 // Legend box size
 var legendWidth = 110,
