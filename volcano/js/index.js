@@ -47,7 +47,7 @@ var radius = 3, border = 2;
 // Build a linear scale for the x-axis.
 var xScale = d3.scale.linear().range([0, width]),
 // Build a log10 scale for the y-axis
-    yScale = d3.scale.log().range([0, 100]);
+    yScale = d3.scale.log().range([0, height]);
 
 // Create the D3 axes objects.
 var xAxis = d3.svg.axis().scale(xScale).orient("bottom"),
