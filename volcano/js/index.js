@@ -33,7 +33,7 @@ var isSignificant = function(d) {
 var margin = {top: 20, right: 20, bottom: 40, left: 40},
 // This margin makes sure the two axes will not overlap,
 // making the plot more readable.
-    axesMargin = 5,
+    axesMargin = 10,
     width = 950 - margin.left - margin.right - axesMargin,
     height = 500 - margin.top - margin.bottom - axesMargin;
 
@@ -104,144 +104,144 @@ d3.json("limma.json", function (error, root) {
         .style("text-anchor", "end")
         .text("Log2 Fold Changes");
 
-    // Let's create a group to contain all the data points, correctly spaced from the axes.
-    var scatter = plot.append("g")
-        .attr("class", "scatter")
-        .attr("transform", "translate(" + axesMargin + "," +  -axesMargin + ")");
-
-    // Finally let's draw the single data points
-    var circles = scatter.selectAll("circle").data(root, getId)
-        .enter().append("circle")
-        .attr("cx", getScaled(xScale, getX))
-        .attr("cy", getScaled(yScale, getY))
-        .attr("r", radius)
-        .classed("significant", isSignificant);
-
-    // We add a small legend to help the users
-    // Start from an ordinal scale to vertically place the labels in the box
-    var legendScale = d3.scale.ordinal()
-        .domain([true,false])
-        .rangeRoundPoints([0, legendHeight],1.5);
-
-    // Add the graphical element containing the legend
-    var legend = scatter.append("g")
-        .attr("class","legend")
-        .attr("transform", "translate(" + (width - legendWidth) + "," + 0 + ")");
-
-    // Add the legend entries (circle + text)
-
-    // We simply add some fictitious data to make the first
-    // entry significant, and the second not, so that the
-    // styling we chose for the scatterplot will apply
-    // here too, free of charge :)
-    var legendEntry = legend.selectAll("g")
-        .data([{"adj.P.Val": 0.01, "logFC": 1.5},
-            {"adj.P.Val": 0.5, "logFC": 0.5}])
-        .enter().append("g");
-
-    legendEntry.append("circle")
-        .attr("r", radius)
-        .attr("cx", 20)
-        .attr("cy", function(d) {return legendScale(isSignificant(d));})
-        .classed("significant", isSignificant);
-
-    legendEntry.append("text")
-        .attr("class", "label")
-        .attr("x", 30)
-        .attr("y",  function(d){return legendScale(isSignificant(d));})
-        .style("dominant-baseline", "middle")
-        .style("text-anchor", "begin")
-        .text(function(d) {
-            return (isSignificant(d) ? "" : "not ") + "significant";
-        } );
-
-
-    // Let's create a Voronoi diagram using the accessors defined before.
-    // We also clip the Voronoi to the plotting area dimensions.
-    var voronoi = d3.geom.voronoi()
-        .x(getScaled(xScale, getX))
-        .y(getScaled(yScale, getY))
-        .clipExtent([[0,0], [width, height]]);
-
-    // For convenience we create a new SVG group that contains all the
-    // Voronoi elements.
-    var voronoiG = plot.append("g")
-        .attr("class", "voronoi")
-        .attr("transform", "translate(" + axesMargin + "," +  -axesMargin + ")");
-
-    // Predicate that returns true if and only if the area of the polygon
-    // is larger than minArea.
-    var hasLargerArea = function(minArea) {
-        return function(polygon) {
-            return polygon.area() > minArea
-        }
-    };
-
-    d3.selection.prototype.moveToFront = function() {
-        return this.each(function(){
-            this.parentNode.appendChild(this);
-        });
-    };
-
-    svg.append("defs")
-        .selectAll("clipPath").data(root).enter()
-        .append("svg:clipPath")
-        .attr("id", getId)
-        .append("circle")
-        .attr("cx", getScaled(xScale, getX))
-        .attr("cy", getScaled(yScale, getY))
-        .attr("r", 20);
-
-    var paths = voronoiG.selectAll("path")
-        .data(voronoi(root).map(d3.geom.polygon).filter(hasLargerArea(Math.pow(radius + border/2, 2)*Math.PI)))
-        .enter().append("svg:polygon")
-        .attr("points", function(d) {
-            //console.log(d);
-            if (!d) return;
-            return d.map(function(x){
-                return [Math.round(x[0]),Math.round(x[1])];
-            }).join(",")
-        })
-        .attr("clip-path", function(d) { return "url(#" + getId(d.point) + ")"; })
-        .attr("class", "invisible");
-
-    circles.each(function(d) {
-        var content = "<p>ID: " + getId(d) + "<br>" +
-            "Log2 Fold Changes: " + getX(d) + "<br>" +
-            "Adjusted P-Value: " + getY(d) + "</p>";
-        new Opentip(this, content, {
-            title: getSymbol(d),
-            background: "white",
-            borderColor: "darkgray",
-            borderWidth: 2,
-            delay: 0.25,
-            hideDelay: 0,
-            shadow: false,
-            stem: 'center bottom',
-            target: true,
-            targetJoint: 'center top',
-            tipJoint: 'center bottom',
-            showOn: "mouseenter",
-            hideOn: "mouseleave"
-        });
-    });
-
-    circles.on("mouseenter", function() {
-        d3.select(this).classed("hover", true).moveToFront();
-    });
-    circles.on("mouseleave", function() {
-        d3.select(this).classed("hover", false)
-    });
-
-    // This function get an event from the Voronoi and triggers the same
-    // event type on the circle element associated with the partition.
-    var forwardEvent = function(d) {
-        var event = document.createEvent("SVGEvents");
-        event.initEvent(d3.event.type, true, true);
-        circles.data([d.point], getId).node().dispatchEvent(event);
-    };
-
-    paths.on("mouseenter", forwardEvent);
-    paths.on("mouseleave", forwardEvent);
-
+//    // Let's create a group to contain all the data points, correctly spaced from the axes.
+//    var scatter = plot.append("g")
+//        .attr("class", "scatter")
+//        .attr("transform", "translate(" + axesMargin + "," +  -axesMargin + ")");
+//
+//    // Finally let's draw the single data points
+//    var circles = scatter.selectAll("circle").data(root, getId)
+//        .enter().append("circle")
+//        .attr("cx", getScaled(xScale, getX))
+//        .attr("cy", getScaled(yScale, getY))
+//        .attr("r", radius)
+//        .classed("significant", isSignificant);
+//
+//    // We add a small legend to help the users
+//    // Start from an ordinal scale to vertically place the labels in the box
+//    var legendScale = d3.scale.ordinal()
+//        .domain([true,false])
+//        .rangeRoundPoints([0, legendHeight],1.5);
+//
+//    // Add the graphical element containing the legend
+//    var legend = scatter.append("g")
+//        .attr("class","legend")
+//        .attr("transform", "translate(" + (width - legendWidth) + "," + 0 + ")");
+//
+//    // Add the legend entries (circle + text)
+//
+//    // We simply add some fictitious data to make the first
+//    // entry significant, and the second not, so that the
+//    // styling we chose for the scatterplot will apply
+//    // here too, free of charge :)
+//    var legendEntry = legend.selectAll("g")
+//        .data([{"adj.P.Val": 0.01, "logFC": 1.5},
+//            {"adj.P.Val": 0.5, "logFC": 0.5}])
+//        .enter().append("g");
+//
+//    legendEntry.append("circle")
+//        .attr("r", radius)
+//        .attr("cx", 20)
+//        .attr("cy", function(d) {return legendScale(isSignificant(d));})
+//        .classed("significant", isSignificant);
+//
+//    legendEntry.append("text")
+//        .attr("class", "label")
+//        .attr("x", 30)
+//        .attr("y",  function(d){return legendScale(isSignificant(d));})
+//        .style("dominant-baseline", "middle")
+//        .style("text-anchor", "begin")
+//        .text(function(d) {
+//            return (isSignificant(d) ? "" : "not ") + "significant";
+//        } );
+//
+//
+//    // Let's create a Voronoi diagram using the accessors defined before.
+//    // We also clip the Voronoi to the plotting area dimensions.
+//    var voronoi = d3.geom.voronoi()
+//        .x(getScaled(xScale, getX))
+//        .y(getScaled(yScale, getY))
+//        .clipExtent([[0,0], [width, height]]);
+//
+//    // For convenience we create a new SVG group that contains all the
+//    // Voronoi elements.
+//    var voronoiG = plot.append("g")
+//        .attr("class", "voronoi")
+//        .attr("transform", "translate(" + axesMargin + "," +  -axesMargin + ")");
+//
+//    // Predicate that returns true if and only if the area of the polygon
+//    // is larger than minArea.
+//    var hasLargerArea = function(minArea) {
+//        return function(polygon) {
+//            return polygon.area() > minArea
+//        }
+//    };
+//
+//    d3.selection.prototype.moveToFront = function() {
+//        return this.each(function(){
+//            this.parentNode.appendChild(this);
+//        });
+//    };
+//
+//    svg.append("defs")
+//        .selectAll("clipPath").data(root).enter()
+//        .append("svg:clipPath")
+//        .attr("id", getId)
+//        .append("circle")
+//        .attr("cx", getScaled(xScale, getX))
+//        .attr("cy", getScaled(yScale, getY))
+//        .attr("r", 20);
+//
+//    var paths = voronoiG.selectAll("path")
+//        .data(voronoi(root).map(d3.geom.polygon).filter(hasLargerArea(Math.pow(radius + border/2, 2)*Math.PI)))
+//        .enter().append("svg:polygon")
+//        .attr("points", function(d) {
+//            //console.log(d);
+//            if (!d) return;
+//            return d.map(function(x){
+//                return [Math.round(x[0]),Math.round(x[1])];
+//            }).join(",")
+//        })
+//        .attr("clip-path", function(d) { return "url(#" + getId(d.point) + ")"; })
+//        .attr("class", "invisible");
+//
+//    circles.each(function(d) {
+//        var content = "<p>ID: " + getId(d) + "<br>" +
+//            "Log2 Fold Changes: " + getX(d) + "<br>" +
+//            "Adjusted P-Value: " + getY(d) + "</p>";
+//        new Opentip(this, content, {
+//            title: getSymbol(d),
+//            background: "white",
+//            borderColor: "darkgray",
+//            borderWidth: 2,
+//            delay: 0.25,
+//            hideDelay: 0,
+//            shadow: false,
+//            stem: 'center bottom',
+//            target: true,
+//            targetJoint: 'center top',
+//            tipJoint: 'center bottom',
+//            showOn: "mouseenter",
+//            hideOn: "mouseleave"
+//        });
+//    });
+//
+//    circles.on("mouseenter", function() {
+//        d3.select(this).classed("hover", true).moveToFront();
+//    });
+//    circles.on("mouseleave", function() {
+//        d3.select(this).classed("hover", false)
+//    });
+//
+//    // This function get an event from the Voronoi and triggers the same
+//    // event type on the circle element associated with the partition.
+//    var forwardEvent = function(d) {
+//        var event = document.createEvent("SVGEvents");
+//        event.initEvent(d3.event.type, true, true);
+//        circles.data([d.point], getId).node().dispatchEvent(event);
+//    };
+//
+//    paths.on("mouseenter", forwardEvent);
+//    paths.on("mouseleave", forwardEvent);
+//
 });
