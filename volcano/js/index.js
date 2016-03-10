@@ -80,7 +80,7 @@ d3.json("limma.json", function (error, root) {
     plot.append("g")
         .attr("class", "y axis")
         .attr("transform", "translate(0," + -axesMargin + ")")
-        .call(yAxis)
+        .call(yScale)
         // ...and its label.
         .append("text")
         .attr("class", "label")
