@@ -69,7 +69,7 @@ var plot = svg.append("g")
 
 
 // We read our data from a json file.
-d3.json("GSE55633_gene_expressions_de.json", function (error, root) {
+d3.json("limma.json", function (error, root) {
     if (error) throw error;
 
     // We can finally retrieve the extremes of our data using the function d3.extent.
