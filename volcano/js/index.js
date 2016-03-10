@@ -79,7 +79,7 @@ d3.json("limma.json", function (error, root) {
     // It is time to draw the y axis...
     plot.append("g")
         .attr("class", "y axis")
-        .attr("transform", "translate(0," + -axesMargin + ")")
+        .attr("transform", "translate(0," + -axesMargin + height + ")")
         .call(yAxis)
         // ...and its label.
         .append("text")
