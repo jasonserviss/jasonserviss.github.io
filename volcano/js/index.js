@@ -71,7 +71,7 @@ var plot = svg.append("g")
 // We read our data from a json file.
 d3.json("limma.json", function (error, root) {
     if (error) throw error;
-
+        colsole.log(yAxis);
     // We can finally retrieve the extremes of our data using the function d3.extent.
     xScale.domain(d3.extent(root, getX));
     yScale.domain(d3.extent(root, getY));
@@ -79,8 +79,9 @@ d3.json("limma.json", function (error, root) {
     // It is time to draw the y axis...
     plot.append("g")
         .attr("class", "y axis")
-        .attr("transform", "translate(0," + -axesMargin + height + ")")
+        .attr("transform", "translate(0," + -axesMargin + ")")
         .call(yAxis)
+
         // ...and its label.
         .append("text")
         .attr("class", "label")
