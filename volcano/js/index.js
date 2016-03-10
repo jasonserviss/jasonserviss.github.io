@@ -37,13 +37,6 @@ var margin = {top: 20, right: 20, bottom: 40, left: 40},
     width = 950 - margin.left - margin.right - axesMargin,
     height = 500 - margin.top - margin.bottom - axesMargin;
 
-// Legend box size
-var legendWidth = 110,
-    legendHeight = 60;
-
-// The radius and border size of each data point.
-var radius = 3, border = 2;
-
 // Build a linear scale for the x-axis.
 var xScale = d3.scale.linear().range([0, width]),
 // Build a log10 scale for the y-axis
@@ -52,6 +45,13 @@ var xScale = d3.scale.linear().range([0, width]),
 // Create the D3 axes objects.
 var xAxis = d3.svg.axis().scale(xScale).orient("bottom"),
     yAxis = d3.svg.axis().scale(yScale).orient("left");
+
+// Legend box size
+var legendWidth = 110,
+    legendHeight = 60;
+
+// The radius and border size of each data point.
+var radius = 3, border = 2;
 
 // Create the SVG container in which we will draw the volcano plot
 // making sure to reserve enough space on the left and on the bottom
