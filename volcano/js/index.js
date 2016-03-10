@@ -71,7 +71,7 @@ var plot = svg.append("g")
 // We read our data from a json file.
 d3.json("limma.json", function (error, root) {
     if (error) throw error;
-        colsole.log(yAxis);
+        console.log(yAxis);
     // We can finally retrieve the extremes of our data using the function d3.extent.
     xScale.domain(d3.extent(root, getX));
     yScale.domain(d3.extent(root, getY));
