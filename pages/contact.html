@@ -11,46 +11,49 @@
     <!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-    <!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+      <!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
     <script src="jquery.sticky-kit.min.js"></script>
     <script src="pkgdown.js"></script>
     <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <!--[if lt IE 9]>
-     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+     <![endif]-->
   </head>
   <body>
     <div class="container template-home">
-      <!-- HEADER -->
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="http://jasonserviss.github.io/index.html">Jason Serviss</a>
+<!-- HEADER -->
+      <header>
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="http://jasonserviss.github.io/index.html">Jason Serviss</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li>
+                  <a href="http://jasonserviss.github.io/pages/contact.html">Contact</a>
+                </li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right"></ul>
+              <!--/.navbar-header -->
+            </div>
+            <!--/.container -->
           </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li>
-                <a href="http://jasonserviss.github.io/pages/contact.html">Contact</a>
-              </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right"></ul>
-          </div>
-          <!--/.nav-collapse -->
+          <!--/.navbar -->
         </div>
-        <!--/.container -->
-        <!--/.navbar -->
-      </div></header>
-      <!-- HEADER FINISHED -->
-      <!-- MAIN PANEL -->
+      </header>
+<!-- HEADER FINISHED -->
+<!-- MAIN PANEL -->
       <div class="row">
         <div class="contents col-md-9">
           <div id="clustersignificanceextras" class="section level1">
+  <!-- ClusterSignificance -->
             <div class="page-header"><h1 class="hasAnchor"><a href="#clustersignificanceextras" class="anchor"></a>ClusterSignificance</h1></div>
             <h3>Description</h3>
             <p>The ClusterSignificance package provides tools to
@@ -78,6 +81,114 @@
             <h3>Package website</h3>
             <p><a href="https://github.com/jasonserviss/ClusterSignificance">ClusterSignificance Website</a></p>
             <br></br>
+  <!-- CIM-seq -->
+            <div class="page-header"><h1 class="hasAnchor"><a href="#clustersignificanceextras" class="anchor"></a>CIM-seq</h1></div>
+            <h3>Description</h3>
+            <p>Advances in single-cell biology has enabled us to
+            investigate isolated single cells at an
+            unprecedented scale and resolution. However, cells
+            in multicellular organisms are largely defined by
+            their spatial organization within organ structures,
+            which means that general methods for studying direct
+            cell interaction on a large scale are needed. We
+            propose a novel method, Cell Interaction by
+            Multiplet Sequencing (CIM-Seq) that uses
+            computational deconvolution of RNA-seq data from
+            partially dissociated tissue to create cell
+            interaction maps. We applied CIM-seq to human fetal
+            pancreas, demonstrating that it recapitulates known
+            cell interactions such as acinar-ductal cell
+            contacts. Furthermore, we discover a strong link
+            between a mesenchymal cell subtype and endocrine
+            progenitor cells, and identify the set of genes that
+            distinguishes this mesenchymal subtype. Thus,
+            CIM-Seq is a general method for cell interaction
+            studies that can be used on cell types defined to
+            an arbitrary resolution allowing identification of
+            interacting sub-cell types or cell states.</p>
+            <h3>Developers</h3>
+            <p><a href="https://github.com/jasonserviss">Jason T. Serviss</a><small class="roles"> Author, maintainer </small></p>
+            <p><a href="https://github.com/martinenge">Martin Enge</a><small class="roles"> Author </small></p>
+            <h3>Project website</h3>
+            <p><a href="https://github.com/jasonserviss/sp.scRNAseq">CIM-seq</a></p>
+            <br></br>
+  <!-- Acid adapted -->
+            <div class="page-header"><h1 class="hasAnchor"><a href="#clustersignificanceextras" class="anchor"></a>Anti-cancer drug screening in acid-adapted cells.</h1></div>
+            <h3>Description</h3>
+            <p>Identification of new anticancer drugs is
+            normally performed using screening methods based on
+            culturing tumor cells under normal oxygen pressure
+            and at physiological pH conditions. However, cancer
+            cells in solid tumors in vivo experience a very
+            different environment characterized by low
+            nutrients, limited oxygen supply and accumulation of
+            metabolic acids. The resulting hypoxia and acidosis
+            have been established as important drivers of
+            malignant progression and contribute to
+            multicellular resistance to chemotherapy. Tumor
+            acidosis represents an important mechanism mediating
+            drug-resistance and identification of drugs able to
+            kill acid-adapted cells may improve efficacy of
+            cancer therapy.</p>
+            <h3>Developers</h3>
+            <p><a href="https://github.com/jasonserviss">Jason T. Serviss</a><small class="roles"> Author, maintainer </small></p>
+            <p><a href="http://ki.se/en/people/angdem">Angelo DeMilito</a><small class="roles"> Author </small></p>
+            <p><a href="https://liu.se/en/employee/paope93">Paola Pellegrini</a><small class="roles"> Author </small></p>
+            <h3>Project website</h3>
+            <p><a href="http://larhol1.cck.ki.se/~jasonserviss/DeMilitoRNAseq/">Acid-adapted screening</a></p>
+            <br></br>
+  <!-- Pediatric ALL -->
+            <div class="page-header"><h1 class="hasAnchor"><a href="#clustersignificanceextras" class="anchor"></a>lncRNA signatures in pediatric ALL.</h1></div>
+            <h3>Description</h3>
+            <p>Acute lymphoblastic leukemia (ALL) is the most
+            common pediatric cancer and remains the leading
+            cause of cancer morbidity among pediatric patients.
+            ALL can be broadly divided into B- and T-cell
+            leukemias and is further sub-classified by
+            well-established recurring genetic abnormalities.
+            These hallmark features of ALL are utilized
+            clinically for treatment stratification but on their
+            own cannot account for the observed prognostic
+            heterogenecity within ALL or recapitulate the
+            disease in in vivo models.</p>
+            <p>Comprehensive microarray-based studies have
+            previously illustrated that mRNA expression patterns
+            correlate well with specific genetic abnormalities
+            observed in ALL and were also used to identify new
+            subtypes based on gene expression profiling. In
+            addition, global transcriptomic and epigenetic
+            analysis have uncovered specific signatures related
+            to ALL prognosis. Although largely unexplored,
+            initial studies have also indicated that lncRNAs may
+            be important biomarkers in some ALL subtypes and
+            play specific roles in important clinical features,
+            such as glucocorticoid resistance.</p>
+            <p>By performing strand-specific RNA-seq analysis on
+            ALL samples, we will identify functional RNA genes
+            that are critical in the oncogenic process and
+            further to identify specific targets of these genes.
+            Since extensive clinical data is available, this
+            will allow us to both analyze how well previously
+            defined patient subgroups, such as those with MLL
+            and BCR-ABL translocations, are identified when only
+            taking into account lncRNAs, and also to define
+            whether new prognostic subgroups can be uncovered.
+            lncRNA candidates showing promise will subsequently
+            be subjected to in-depth bioinformatics-based
+            analysis by incorporating additional publically
+            available high-throughput datasets. Gene regulation,
+            conservation, transcription factor binding, and
+            “guilt-by-association” studies will be preformed
+            uncovering characteristics and potential functions
+            for the lncRNA candidates. In addition, mass
+            spectrometry and GRO-seq will be performed on a
+            subset of these samples. We will utilize this data
+            to correlate lncRNA and protein expression, as well
+            as, examining differential expression of actively
+            transcribed enhancer RNAs within the ALL subtypes.
+            </p>
+            <br></br>
+  <!-- lncTAM34a -->
             <div class="page-header"><h1 class="hasAnchor"><a href="#clustersignificanceextras" class="anchor"></a>lncTAM34a</h1></div>
             <h3>Description</h3>
             <p>The microRNA-34a is a well-studied tumor suppressor
@@ -106,14 +217,15 @@
             <br></br>
           </div>
         </div>
-        <!-- MAIN PANEL FINISHED -->
-        <!-- SIDE BAR -->
+<!-- MAIN PANEL FINISHED -->
+<!-- SIDE BAR -->
+  <!-- ClusterSignificance -->
         <div class="col-md-3" id="sidebar" style="padding-top: 100px;">
           <h2>License</h2>
           <p><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></p>
           <h2>Status</h2>
           <ul class="list-unstyled">
-            <!--Bioconductor General-->
+          <!--Bioconductor General-->
             <li>
               <h4>Bioconductor</h4>
               <a href="http://www.bioconductor.org/packages/devel/bioc/html/ClusterSignificance.html#since"><img border="0" src="http://www.bioconductor.org/shields/years-in-bioc/ClusterSignificance.svg" title="How long since the package was first in a released Bioconductor version (or is it in devel only)."></a>
@@ -141,14 +253,64 @@
             </li>
           </ul>
         </div>
+  <!-- CIM-Seq -->
+        <div class="col-md-3" id="sidebar" style="padding-top: 220px;">
+          <h2>License</h2>
+          <p><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></p>
+          <h2>Status</h2>
+          <ul class="list-unstyled">
+            <!--Travis CI-->
+            <li>
+              <h4>Travis CI</h4>
+              <h5>Release</h5>
+              <a href="https://travis-ci.com/jasonserviss/sp.scRNAseq"><img src="https://travis-ci.com/jasonserviss/sp.scRNAseq.svg?token=8VXNvJpmRV9RpFtTcJYW&branch=master"></a>
+            </li>
+            <li>
+              <h5>Devel</h5>
+              <a href="https://travis-ci.com/jasonserviss/sp.scRNAseq"><img src="https://travis-ci.com/jasonserviss/sp.scRNAseq.svg?token=8VXNvJpmRV9RpFtTcJYW&branch=devel"></a>
+            </li>
+            <li>
+              <h5>Test coverage</h5>
+              <a href="https://codecov.io/gh/jasonserviss/sp.scRNAseq"><img src="https://codecov.io/gh/jasonserviss/sp.scRNAseq/branch/master/graph/badge.svg?token=vVxKKSzhGt" title="Test coverage percentage"></a>
+              </ul>
+        </div>
+  <!-- Acid adapted -->
+        <div class="col-md-3" id="sidebar" style="padding-top: 350px;">
+          <h2>License</h2>
+          <p><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></p>
+          <h2>Status</h2>
+          <ul class="list-unstyled">
+          <!--Travis CI-->
+            <li>
+              <h4>Travis CI</h4>
+              <a href="https://travis-ci.org/GranderLab/acidAdaptedRNAseq"><img src="https://api.travis-ci.org/GranderLab/acidAdaptedRNAseq.svg"></a>
+            </li>
+          </ul>
+        </div>
+  <!-- Pediatric ALL -->
+        <div class="col-md-3" id="sidebar" style="padding-top: 320px;">
+          <h2>License</h2>
+          <p><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></p>
+          <h2>Status</h2>
+          <ul class="list-unstyled">
+            <!--Travis CI-->
+            <li>
+              <h4>Travis CI</h4>
+              <a href="https://travis-ci.org/jasonserviss/pALLseq"><img src="https://travis-ci.com/jasonserviss/pALLseq.svg?token=8VXNvJpmRV9RpFtTcJYW&branch=master"></a>
+            </li>
+          </ul>
+        </div>
+  <!-- lncTAM34a -->
+        <div class="col-md-3" id="sidebar" style="padding-top: 350px;"></div>
       </div>
-      <!-- SIDE BAR FINISHED -->
-      <!-- FOOTER -->
+<!-- SIDE BAR FINISHED -->
+<!-- FOOTER -->
       <footer>
         <div class="copyright"><p>Developed by Jason T. Serviss.</p></div>
         <div class="pkgdown"><p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p></div>
       </footer>
-      <!-- FOOTER FINISHED -->
+<!-- FOOTER FINISHED -->
     </div>
   </body>
 </html>
+
